@@ -1,0 +1,23 @@
+body {
+
+    background-color: darkgrey !important;
+
+}
+
+#carouselExampleIndicators {
+
+
+    padding: 1%;
+}
+
+.one_cikanlar {
+    padding: 1%;
+
+    display: flex !important;
+    direction: ltr;
+
+}
+
+.card {
+    margin: 1%;
+}
