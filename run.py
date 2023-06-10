@@ -1,8 +1,11 @@
-from flask import Flask, render_template,request,flash,redirect,url_for
+from flask import Flask, render_template, request, flash, redirect, url_for
 
-from forms import RegisterForm
+from forms import *
+import uuid
 
-app = Flask(__name__, template_folder="templates")
+
+app = Flask(__name__, template_folder="templates", static_folder="static")
+app.secret_key = uuid.uuid4().hex
 
 
 @app.route("/")
@@ -29,14 +32,16 @@ def product_page(category, product_id):
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
-    form = RegisterForm(request.form)
+    kayit_form = KayitForm(request.form)
+    giris_form = GirisForm(request.form)
 
-    if request.method == 'POST' and form.validate():
-        print(form)
-        #db_session.add(user)
+    if request.method == 'POST' and (kayit_form.validate() or giris_form.validate()):
+
+        # db_session.add(user)
         flash('Başarıyla kayıt olundu...')
-        return redirect(url_for('login'))
-    return render_template('register.html', form=form)
+        return redirect(url_for('main_page'))
+    return render_template('register.html', kayit_form=kayit_form, giris_form=giris_form)
+
 
 if __name__ == "__main__":
 

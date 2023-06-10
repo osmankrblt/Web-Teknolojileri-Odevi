@@ -8,36 +8,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="..//static//style.css">
+
+
+
+  
+
+
 </head>
 
 <body>
 
     {% block content %}
-
-    {% include "includes/messages.html" %}
     <div class="register_mode">
-        <h2>Giriş yap</h2>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span>
-        </label>
+       
+        <div class="switch_label">
 
-        <h2>Kayıt ol</h2>
+            <h2>Giriş yap</h2>
+            <label class="switch" >
+                <input type="checkbox" id="switch">
+                <span class="slider round"></span>
+            </label>
+    
+            <h2>Kayıt ol</h2>
+        </div>
+
+
+        <div class="girissayfasi" id="girissayfasi">
+            {% include "includes/messages.html" %}
+
+
+            {% from "formhelpers.html" import render_field %}
+            <form method=post>
+                <dl>
+                    {{ render_field(giris_form.email) }}
+                    {{ render_field(giris_form.password) }}
+
+                </dl>
+                <p><input type=submit value="Giriş yap">
+            </form>
+
+        </div>
+
+
+        <div class="kayitsayfasi disable" id="kayitsayfasi">
+            <h2>Kayıt ol</h2>
+            {% include "includes/messages.html" %}
+
+            {% from "formhelpers.html" import render_field %}
+            <form method=post>
+                <dl>
+                    {{ render_field(kayit_form.name) }}
+                    {{ render_field(kayit_form.surname) }}
+                    {{ render_field(kayit_form.email) }}
+                    {{ render_field(kayit_form.password) }}
+                    {{ render_field(kayit_form.confirm) }}
+                    {{ render_field(kayit_form.address) }}
+
+                </dl>
+                <p><input type=submit value=Kayıt ol>
+            </form>
+        </div>
+
     </div>
 
-    {% from "formhelpers.html" import render_field %}
-    <form method=post>
-        <dl>
-            {{ render_field(form.name) }}
-            {{ render_field(form.address) }}
+    <script >
+        const switcher = document.getElementById("switch");
 
-        </dl>
-        <p><input type=submit value=Kayıt ol>
-    </form>
+        const girissayfasi = document.getElementById("girissayfasi");
+        const kayitsayfasi = document.getElementById("kayitsayfasi");
+        
+        switcher.addEventListener("change", function () {
+    
+           if (this.checked) {
+
+            girissayfasi.classList.add("disable");
+            kayitsayfasi.classList.remove("disable");
+
+            
+           }else{
+          
+            girissayfasi.classList.remove("disable");
+            kayitsayfasi.classList.add("disable");
+           
+           }
+    
+        });
+    </script>
 
     {% endblock %}
-
-
+  
 </body>
+
+
 
 </html>
