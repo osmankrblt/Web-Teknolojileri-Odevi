@@ -45,6 +45,11 @@ body {
         display: grid !important;
         margin: auto !important;
     }
+
+    .register_mode {
+        padding-left: 10%;
+
+    }
 }
 
 
@@ -65,8 +70,23 @@ body {
 
 .register_mode {
     padding: 10px;
-    display: inline-flex;
-    align-items: center;
+    width: 100% !important;
+    display: inline-block;
+    padding-left: 35%;
+
+
+}
+
+.switch_label {
+
+    display: block;
+
+}
+
+.disable {
+
+    display: none;
+
 
 
 }
