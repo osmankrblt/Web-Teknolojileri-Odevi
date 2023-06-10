@@ -1,6 +1,6 @@
 body {
 
-    background-color: darkgrey !important;
+    background-color: antiquewhite !important;
 
 }
 
@@ -11,13 +11,26 @@ body {
 }
 
 .one_cikanlar {
+    text-align: center;
+}
+
+.urunler {
     padding: 1%;
 
-    display: flex !important;
-    direction: ltr;
+    display: grid !important;
 
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
 }
 
 .card {
     margin: 1%;
+}
+
+.bi {
+
+    background-color: red !important;
+    color: red !important;
+
 }
