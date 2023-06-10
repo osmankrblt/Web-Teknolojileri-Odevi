@@ -9,7 +9,7 @@ def main_page():
     return render_template("home_page.html", images=[1, 2, 3, 4, 5], urunler=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 
 
-@app.route("/<category>")
+@app.route("/<category>", methods=['GET', 'POST'])
 def category_page(category):
 
     #products = get_urun()
@@ -18,11 +18,11 @@ def category_page(category):
 
 
 @app.route("/<category>/<product_id>")
-def product_page(category, category_id):
+def product_page(category, product_id):
 
     #products = get_urun()
     product = 1
-    return render_template("product_page.html", category_name=category, urunler=product)
+    return render_template("product_page.html", category_name=category, urun=product)
 
 
 if __name__ == "__main__":
