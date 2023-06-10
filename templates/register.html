@@ -1,0 +1,43 @@
+{% extends "main_template.html" %}
+{% from "formhelpers.html" import render_field %}
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <title>Contacts</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="..//static//style.css">
+</head>
+
+<body>
+
+    {% block content %}
+
+    {% include "includes/messages.html" %}
+    <div class="register_mode">
+        <h2>Giriş yap</h2>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+
+        <h2>Kayıt ol</h2>
+    </div>
+
+    {% from "formhelpers.html" import render_field %}
+    <form method=post>
+        <dl>
+            {{ render_field(form.name) }}
+            {{ render_field(form.address) }}
+
+        </dl>
+        <p><input type=submit value=Kayıt ol>
+    </form>
+
+    {% endblock %}
+
+
+</body>
+
+</html>
