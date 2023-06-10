@@ -19,10 +19,37 @@ body {
 
     display: grid !important;
 
-    display: grid;
+
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
 }
+
+.card :hover {
+    padding: 1%;
+    color: cadetblue;
+    width: 25rem;
+
+
+
+}
+
+
+@media (max-width:650px) {
+    .urunler {
+        width: max-content;
+        align-items: center !important;
+        text-align: center !important;
+        align-content: center !important;
+        grid-template-columns: repeat(1, 1fr) !important;
+        display: grid !important;
+        margin: auto !important;
+    }
+}
+
+
+
+
+
 
 .card {
     margin: 1%;
