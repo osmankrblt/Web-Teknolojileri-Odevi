@@ -69,18 +69,109 @@
 
           </div>
         </li>
+        {% if session['isLoggedIn'] != True %}
+        <li class="nav-item">
+          <a class="nav-link" href="/register">Giriş yap veya Kayıt ol</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="#">{{ session["username"]}}</a>
+        </li>
 
         <li class="nav-item">
-          <a class="nav-link disabled" href="/register">Giriş yap veya Kayıt ol</a>
+
+          <a class="nav-link " href="/logout"
+            style="border-radius: 5px; padding: 5px;background-color: red; width: fit-content ;color: black;">Çıkış
+            yap</a>
         </li>
+
+        {% endif %}
+
+        <li class="nav-item">
+          <button style=" padding: 5px !important;" type="button" class="btn btn-primary" data-toggle="modal"
+            data-target="#sepet">
+            Sepetim
+          </button>
+        </li>
+        <li>
+
+
+
 
       </ul>
 
     </div>
   </nav>
+  <div onclick="displayBoxes()" onchange="displayBoxes()" class="modal fade" id="sepet" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sepetim</h5>
+          <button itype="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
 
 
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button onclick="sessionStorage.removeItem('boxes')" type="button" class="btn btn-secondary" id="clear"
+            data-dismiss="modal">Sepeti temizle</button>
+          <button type="button" class="btn btn-primary" id="buy">Satın al</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+    function displayBoxes() {
+
+      const boxes = JSON.parse(sessionStorage.getItem("boxes")) == null ? [] : JSON.parse(sessionStorage.getItem("boxes"));
+
+
+      var sel = document.querySelector('.modal-body');
+      var delChild = sel.lastChild;
+
+      while (delChild) {
+        sel.removeChild(delChild);
+        delChild = sel.lastChild;
+      }
+
+      boxes.forEach(boxe => {
+
+        var box = JSON.parse("\"" + boxe + "\"");
+
+        console.log(typeof (box));
+        console.log(box);
+
+        let h5 = document.createElement('h5');
+        let img = document.createElement('img');
+        let div = document.createElement('div');
+
+        h5.innerText = boxe["name"];
+
+
+        img.src = boxe["img"];
+        div.appendChild(img);
+        div.appendChild(h5);
+        div.style = "display: inline";
+        sel.appendChild(div);
+        sel.appendChild(document.createElement('br'));
+
+      });
+
+
+    };
+
+  </script>
+  {% include "includes/messages.html" %}
   {% block content %}
+
   {% endblock %}
 
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -106,7 +197,13 @@
     </ul>
   </footer>
 
+
+
 </body>
+
+
+
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
   integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"

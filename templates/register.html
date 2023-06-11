@@ -11,7 +11,7 @@
 
 
 
-  
+
 
 
 </head>
@@ -20,21 +20,21 @@
 
     {% block content %}
     <div class="register_mode">
-       
+
         <div class="switch_label">
 
             <h2>Giriş yap</h2>
-            <label class="switch" >
+            <label class="switch">
                 <input type="checkbox" id="switch">
                 <span class="slider round"></span>
             </label>
-    
+
             <h2>Kayıt ol</h2>
         </div>
 
 
         <div class="girissayfasi" id="girissayfasi">
-            {% include "includes/messages.html" %}
+
 
 
             {% from "formhelpers.html" import render_field %}
@@ -52,7 +52,7 @@
 
         <div class="kayitsayfasi disable" id="kayitsayfasi">
             <h2>Kayıt ol</h2>
-            {% include "includes/messages.html" %}
+
 
             {% from "formhelpers.html" import render_field %}
             <form method=post>
@@ -71,32 +71,32 @@
 
     </div>
 
-    <script >
+    <script>
         const switcher = document.getElementById("switch");
 
         const girissayfasi = document.getElementById("girissayfasi");
         const kayitsayfasi = document.getElementById("kayitsayfasi");
-        
+
         switcher.addEventListener("change", function () {
-    
-           if (this.checked) {
 
-            girissayfasi.classList.add("disable");
-            kayitsayfasi.classList.remove("disable");
+            if (this.checked) {
 
-            
-           }else{
-          
-            girissayfasi.classList.remove("disable");
-            kayitsayfasi.classList.add("disable");
-           
-           }
-    
+                girissayfasi.classList.add("disable");
+                kayitsayfasi.classList.remove("disable");
+
+
+            } else {
+
+                girissayfasi.classList.remove("disable");
+                kayitsayfasi.classList.add("disable");
+
+            }
+
         });
     </script>
 
     {% endblock %}
-  
+
 </body>
 
 

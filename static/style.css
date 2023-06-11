@@ -25,14 +25,14 @@ body {
     gap: 10px;
 }
 
-.card :hover {
+/* .card :hover {
     padding: 1%;
     color: cadetblue;
     width: 25rem;
 
 
 
-}
+} */
 
 
 @media (max-width:650px) {

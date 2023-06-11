@@ -9,7 +9,7 @@ class KayitForm(Form):
     surname = StringField(
         u'Soyisim', [validators.InputRequired(), validators.length(max=10)])
     email = StringField(
-        u'Mail adresi', [validators.Email(), validators.InputRequired(), validators.length(max=20)])
+        u'Mail adresi', [validators.Email(), validators.InputRequired(), validators.length(max=100)])
     password = StringField(
         u'Parola', [validators.InputRequired(), validators.length(max=10)])
     confirm = StringField(
@@ -19,7 +19,7 @@ class KayitForm(Form):
 
 class GirisForm(Form):
     email = StringField(
-        u'Mail', [validators.Email(),validators.InputRequired(), validators.length(max=20)])
+        u'Mail', [validators.Email(),validators.InputRequired(), validators.length(max=100)])
     
     password = StringField(
         u'Parola', [validators.InputRequired(), validators.length(max=10)])
