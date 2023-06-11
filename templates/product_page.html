@@ -2,20 +2,47 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
 
-            {%  block titleName  %}
+        {% block titleName %}
 
-            Kategori adi
-            
-            {%  endblock   %}
+        Kategori adi
+
+        {% endblock %}
 
     </title>
 </head>
-<body>
-    
+
+<body >
+
+
+    {% block content %}
+
+
+<div style=" width:80%;margin:10px !important">
+
+    <div style="background-color:white;align-items:center;width:30%;margin:20px"  >
+
+
+        <img style="height: 100%; width: 100%; object-fit: contain" src="{{ product['img'] }}">
+        
+    </div>
+   
+    <p>{{ product['desc'] }}</p>
+
+
+    <a class="btn btn-primary" onclick='addproducttobox("{{ urun }}") '>Sepete ekle</a>
+</div>
+    {% endblock %}
+
+
+
+
+
 </body>
+
 </html>

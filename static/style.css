@@ -61,10 +61,10 @@ body {
     margin: 1%;
 }
 
-.bi {
+ul li svg {
 
-    background-color: red !important;
-    color: red !important;
+
+    color: grey !important;
 
 }
 

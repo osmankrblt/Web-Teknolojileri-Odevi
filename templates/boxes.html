@@ -1,0 +1,79 @@
+{% extends "main_template.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    {% block content %}
+
+
+    <div onpointermove="displayBoxes()" class="modal-body">
+
+
+
+
+
+    </div>
+    <div class="modal-footer">
+        <button onclick="sessionStorage.removeItem('boxes')" type="button" class="btn btn-secondary" id="clear"
+            data-dismiss="modal">Sepeti temizle</button>
+        <button type="button" class="btn btn-primary" id="buy">Satın al</button>
+    </div>
+
+    <script>
+
+        function displayBoxes() {
+
+            const boxes = JSON.parse(sessionStorage.getItem("boxes")) == null ? [] : JSON.parse(sessionStorage.getItem("boxes"));
+            console.log(boxes);
+
+
+            var sel = document.querySelector('.modal-body');
+            var delChild = sel.lastChild;
+
+            while (delChild) {
+                sel.removeChild(delChild);
+                delChild = sel.lastChild;
+            }
+
+
+
+
+            boxes.forEach(box => {
+
+                box = JSON.parse(JSON.stringify(box));
+
+
+
+                let h5 = document.createElement('h5');
+                let img = document.createElement('img');
+                let div = document.createElement('div');
+
+                h5.innerText = box["name"];
+
+
+                img.src = box["img"];
+                div.appendChild(img);
+                div.appendChild(h5);
+                div.style = "display: inline";
+                sel.appendChild(div);
+                sel.appendChild(document.createElement('br'));
+
+            });
+
+
+        };
+
+    </script>
+    {% endblock %}
+
+</body>
+
+</html>
