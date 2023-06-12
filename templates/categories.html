@@ -35,13 +35,11 @@
 
 
       <div class="card" style="width: 18rem;">
-        <a href="{{ url_for('product_page', category =  'one_cikanlar' ,product_id =  1 ) }}">
-          <img class="card-img-top" src="{{ urun['img'] }}" alt="Card image cap">
+        <a href="{{ url_for('product_page', category =  category_name ,product_id =  urun.id-1 ) }}">
+          <img class="card-img-top" src="{{ urun.img }}" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">{{ urun.name }}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-              the
-              card's content.</p>
+            <p class="card-text">{{ urun.desc[0:80] }}</p>
             <a class="btn btn-primary" onclick='addproducttobox("{{ urun }}") '>Sepete ekle</a>
           </div>
         </a>
